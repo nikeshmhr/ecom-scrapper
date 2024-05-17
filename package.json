@@ -1,7 +1,7 @@
 {
   "name": "ecom-scraper",
   "displayName": "Ecom scraper",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple e-commerce scraper.",
   "author": "Nikesh Maharjan <nikeshmhr@gmail.com>",
   "scripts": {
@@ -10,6 +10,8 @@
     "package": "plasmo package"
   },
   "dependencies": {
+    "@plasmohq/messaging": "^0.6.2",
+    "firebase": "^10.11.1",
     "plasmo": "0.86.2",
     "react": "18.2.0",
     "react-dom": "18.2.0"

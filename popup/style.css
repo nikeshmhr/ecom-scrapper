@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div.wrapper {
+    padding: 1rem;
+    width: 400px;
+    background: lightcyan
+}
+
+p {
+    font-size: .9rem;
+    padding: 5px 0;
+}
+
+h5 {
+    font-size: 1rem;
+    margin: 0;
+    margin-top: 8px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    cursor: pointer;
+    padding: 5px 0;
+    border-bottom: 1px dotted black;
+}
+
+ul li:hover {
+    background-color: rgba(160, 32, 240, 0.1)
+}
+
+.history_item div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.history_item div p {
+    text-wrap: wrap;
+}

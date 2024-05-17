@@ -1,0 +1,22 @@
+.ext_wrapper {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100px;
+}
+
+.icon_wrapper {
+    width: 50px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.icon_wrapper img {
+    width: 100%;
+    pointer-events: none;
+}
