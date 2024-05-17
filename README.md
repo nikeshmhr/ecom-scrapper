@@ -1,33 +1,49 @@
-This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
+# Setup
 
-## Getting Started
+## Firestore Database
 
-First, run the development server:
+- Sign in to your firebase [console](https://console.firebase.google.com/).
+- Create Firebase projects
+- Once project is created click on **Cloud Firestore** in your app dashboard.
+- Click on Create database
+- Select location (if allowed) and in Secure rules section select **Start in test mode**.
+- Now go to the **Project settings** from **Project Overview** side menu.
+  ![alt text](instruction/settings.png)
+- In **Your apps** section click on add a web
+  ![alt text](instruction/add-app.png)
+- Provide App nickname, leave checkbox unchecked and click on Register app.
+- For **Add Firebase SDK** leave it as it is.
+  - Copy the firebase config and store it somewhere for now.
+    ![alt text](instruction/firebase-config.png)
+- Click continue to console
 
-```bash
-pnpm dev
-# or
-npm run dev
-```
+[Reference](https://firebase.google.com/docs/firestore/quickstart)
 
-Open your browser and load the appropriate development build. For example, if you are developing for the chrome browser, using manifest v3, use: `build/chrome-mv3-dev`.
+## Environment Setup
 
-You can start editing the popup by modifying `popup.tsx`. It should auto-update as you make changes. To add an options page, simply add a `options.tsx` file to the root of the project, with a react component default exported. Likewise to add a content page, add a `content.ts` file to the root of the project, importing some module and do some logic, then reload the extension on your browser.
+- Create `.env` file and used contents from `.env.example` file.
+- Use the firebase config values we store earlier in `.env` file (keys are already in order)
+  - `.env` file should look like following after this step.
+    ![alt text](instruction/env.png)
+- `pnpm install`
+- `pnpm build`
+- The build output will be inside `build/chrome-mv3-prod` folder.
+- Open chrome and go to `chrome://extension`
+- Toggle Developer mode on on the top right of the page.
+- Click on **Load unpacked** button and navigate to the extension folder.
+- The extension should be installed.
 
-For further guidance, [visit our Documentation](https://docs.plasmo.com/)
+## Using the extension
 
-## Making production build
+- Open [daraz](https://www.daraz.com.np/) site
+- You should see the extension icon on the right middle page.
+- Visit to any products page and click on it to start scrapping.
+- Once done, the data and scrapping history should be populated in firestore database.
 
-Run the following:
+## Database schema
 
-```bash
-pnpm build
-# or
-npm run build
-```
+The database schema consists of two collections: `data` and `history`. 
 
-This should create a production bundle for your extension, ready to be zipped and published to the stores.
+`data` stores the scrapped data and has properties `title`, `url`, `description`, `price` and `image`.
 
-## Submit to the webstores
-
-The easiest way to deploy your Plasmo extension is to use the built-in [bpp](https://bpp.browser.market) GitHub action. Prior to using this action however, make sure to build your extension and upload the first version to the store to establish the basic credentials. Then, simply follow [this setup instruction](https://docs.plasmo.com/framework/workflows/submit) and you should be on your way for automated submission!
+`history` stores the scrapping history and has properties `timestamp`, `title`, `url`
